@@ -27,7 +27,7 @@ export function checkVariant (variant?:TVariant){
  else if(variant === "secondary"){
     return {backgroundColor:"gray",color:"black"}
  }else if(variant === "danger"){
-    return {backgroundColor:"red",color:"black"}
+    return {backgroundColor:"red",color:"white"}
  }else if(variant === "success"){
     return {backgroundColor:"green",color:"black"}
  }else if(variant === "warning"){

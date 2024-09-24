@@ -1,4 +1,4 @@
-import React from 'react'
+ import React from 'react'
 import NavBar from '../../components/navBar/NavBar'
 import ProductItem from '../../components/productItem/ProductItem'
 import Container from '../../components/container/Container'

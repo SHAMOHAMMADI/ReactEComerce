@@ -9,8 +9,8 @@ function Product() {
 
   return (
     <Container>
-      <div className="text-sm my-4rounded-lg text-justify grid grid-cols-12 h-36 flex-row-reverse">
-        <div className="col-span-9 bg-blue-100 p-4 rtl">
+      <div className="text-sm my-4 text-justify grid grid-cols-12 h-36 flex-row-reverse mt-6  rounded-2xl ">
+        <div className="col-span-9 bg-blue-100 p-4 rtl  rounded-s-xl">
           <p className="">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
             استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
@@ -26,7 +26,7 @@ function Product() {
           </p>
         </div>
 
-        <div className="flex flex-col justify-center items-center px-2 col-span-3 bg-blue-200 ">
+        <div className="flex flex-col justify-center items-center px-2 col-span-3 bg-blue-200 border border-white rounded-e-2xl">
           <img
             src="/11.jpg"
             className=" rounded  shadow-lg border my-auto"
@@ -39,6 +39,7 @@ function Product() {
             style={{padding:"10px 20px" , borderRadius:"10px" , margin:"10px",boxShadow:"-1px 1px 5px 1px rgba(1 , 1 , 1 , 0.3)"}}
             variant="danger"
             id="btn-2"
+            
           >
             add to cart
           </Button>

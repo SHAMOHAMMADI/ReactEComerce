@@ -18,7 +18,7 @@ function CartItem() {
           <span className="border text-center mx-2">{2}</span>
           <Button
             variant="primary"
-            style={{
+            style={{ 
               borderRadius: "10px",
               border: "1px solid",
               maxWidth: "120%",
