@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Home from './pages/home/Home.tsx'
 import Store from './pages/store/Store.tsx'
 import {Routes , Route} from 'react-router-dom'
@@ -6,9 +5,33 @@ import NavBar from './components/navBar/NavBar.tsx'
 import Layout from './components/layout/Layout.tsx'
 import Product from './pages/product/Product.tsx'
 import Cart from './pages/cart/Cart.tsx'
+import ProductTest from './pages/productTest/ProductTest.tsx'
+import axios from 'axios'
+import {useState , useEffect, createContext} from 'react'
+
+type TData = {
+  userId: number
+  id: number
+  title: string
+  completed: boolean 
+  image : string
+}
+
+// export interface Root {
+  
+// }
+
 
 
 function App() {
+
+  const datacontainer =createContext()
+  const [data , setData] = useState<TData | null>(null)
+  useEffect(()=>{
+    axios.get('http://localhost:3061/products').then((res)=>{
+      setData(res.data)
+    })
+  },[])
   const [count, setCount] = useState(25)
 
   return (
@@ -18,6 +41,7 @@ function App() {
     <Route path="/store" element={<Store />}/>
     <Route path="/product/:id" element={<Product />}/>
     <Route path="/cart" element={<Cart />}/>
+    <Route path="/productTest" element={<ProductTest />}/>
     </Routes> 
     </Layout>
   )

@@ -3,8 +3,8 @@ import Button from "../button/Button";
 
 function CartItem() {
   return (
-    <div className=" border shadow-md rounded flex flex-col justify-center text-right ">
-      <img src="/12.jpg" alt="itemPicture" className="w-full rounded-md " />
+    <div className=" border shadow-md rounded flex flex-row-reverse text-right mx-12">
+      <img src="/12.jpg" alt="itemPicture" className="w-36 rounded-md " />
       <div className="p-4">
         <h3>عنوان محصول</h3>
         <div>توضیح</div>
@@ -23,6 +23,7 @@ function CartItem() {
               border: "1px solid",
               maxWidth: "120%",
             }}
+
           >
             -
           </Button>

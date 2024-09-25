@@ -29,7 +29,7 @@ export function checkVariant (variant?:TVariant){
  }else if(variant === "danger"){
     return {backgroundColor:"red",color:"white"}
  }else if(variant === "success"){
-    return {backgroundColor:"green",color:"black"}
+    return {backgroundColor:"green",color:"white", padding:"5px 10px", borderRadius:"10px", margin:"5px"}
  }else if(variant === "warning"){
     return {backgroundColor:"yellow",color:"black"}
  }
