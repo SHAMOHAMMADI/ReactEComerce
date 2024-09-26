@@ -25,14 +25,8 @@ type TData = {
 
 function App() {
 
-  const datacontainer =createContext()
-  const [data , setData] = useState<TData | null>(null)
-  useEffect(()=>{
-    axios.get('http://localhost:3061/products').then((res)=>{
-      setData(res.data)
-    })
-  },[])
-  const [count, setCount] = useState(25)
+ 
+ 
 
   return (
     <Layout>

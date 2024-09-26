@@ -1,35 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "../../components/container/Container";
 import Button from "../../components/button/Button";
 import { checkVariant } from "../../components/button/Button";
+import { getProduct } from "../../services/api";
+import { Products } from "../../types/server";
 
 function Product() {
-  const params = useParams();
-
+  const params = useParams<{id: string }>();
+  const [productData , setProductData] = useState<Products>()
+useEffect(()=>{
+getProduct(params.id as string).then(result => setProductData(result))
+},[])
   return (
     <Container>
-      <div className="text-sm my-4 text-justify grid grid-cols-12 h-36 flex-row-reverse mt-6  rounded-2xl ">
+      <div className="text-sm my-4 text-justify grid grid-cols-12 h-fit flex-row-reverse mt-6  rounded-2xl ">
         <div className="col-span-9 bg-blue-100 p-4 rtl  rounded-s-xl">
           <p className="">
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-            استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
-            ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
-            کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی
-            در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را
-            می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-            الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این
-            صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و
-            شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای
-            اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد
-            استفاده قرار گیرد.
+            {productData?.description}
           </p>
         </div>
 
         <div className="flex flex-col justify-center items-center px-2 col-span-3 bg-blue-200 border border-white rounded-e-2xl">
           <img
-            src="/11.jpg"
-            className=" rounded  shadow-lg border my-auto"
+            src={productData?.image}
+            className=" rounded  shadow-lg border mt-6"
             alt=""
           />
           <Button
@@ -39,7 +34,7 @@ function Product() {
             style={{padding:"10px 20px" , borderRadius:"10px" , margin:"10px",boxShadow:"-1px 1px 5px 1px rgba(1 , 1 , 1 , 0.3)"}}
             variant="danger"
             id="btn-2"
-            
+
           >
             add to cart
           </Button>
@@ -56,6 +51,11 @@ function Product() {
           <Button
           variant="warning"
           >yellow</Button> */}
+        <div className="border flex flex-col rounded-xl shadow-inner text-center [&>*]:p-2 ">
+        <div className="flex flex-col "><strong>Price : </strong><span>{productData?.price}</span><strong>cat : </strong><span>{productData?.category}</span></div>
+          
+        <div><span><strong>count : </strong>{productData?.rating.count}</span><span>{productData?.rating.rate}</span></div>
+        </div>
         </div>
       </div>
     </Container>

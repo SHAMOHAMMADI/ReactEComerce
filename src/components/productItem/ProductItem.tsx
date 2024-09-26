@@ -1,26 +1,27 @@
 import React from "react";
 import Button from "../button/Button";
+import { Products } from "../../types/server";
 
-function ProductItem() {
+type ProductItem = Products 
+
+function ProductItem({title , id , price , description , image , rating}:ProductItem) {
   return (
     <div className="border shadow rounded">
-      <img src="/10.jpg" className="rounded-t" alt="product Image" />
+      <img src={image} className="rounded-t" alt="product Image" />
       <div className="flex  justify-between flex-row-reverse p-2 px-4">
-        <h3>عنوان محصول</h3>
-        <span>55$</span>
+        <h4>{id}</h4>
+        <h3>{title}</h3>
+        <span>{price}</span>
       </div>
       <div className=" px-4 line-clamp-2 text-justify">
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore
-          ipsam, excepturi ad velit ullam quo nostrum soluta quaerat enim.
-          Placeat ex incidunt debitis voluptatem perferendis perspiciatis magnam
-          architecto mollitia iure obcaecati, voluptates expedita quis, ipsum,
-          quibusdam laboriosam facere aspernatur laborum provident voluptas.
-          Aspernatur itaque consequatur quae inventore autem doloribus laborum.
+         {description}
         </p>
+        <p>{rating.rate}</p>
+        <p>{rating.count}</p>
       </div>
       <div>
-        <Button>add to cart</Button>
+        <Button variant="primary" className='rounded  flex justify-center mt-2 h-10 items-center  hover:bg-blue-100'>add to cart</Button>
       </div>
     </div>
   );

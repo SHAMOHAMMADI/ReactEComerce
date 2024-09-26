@@ -9,7 +9,6 @@ type IButton = ComponentProps<"button"> & {
 
 
 function Button({children , variant ,style ,  ...rest}:IButton) {
-    console.log(checkVariant(variant))
     return (
         <div>
         
