@@ -8,6 +8,7 @@ import Cart from './pages/cart/Cart.tsx'
 import ProductTest from './pages/productTest/ProductTest.tsx'
 import axios from 'axios'
 import {useState , useEffect, createContext} from 'react'
+import { ShoppingCartContext, ShoppingCartProvider } from './context/ShoppingCartContext.tsx'
 
 type TData = {
   userId: number
@@ -25,10 +26,8 @@ type TData = {
 
 function App() {
 
- 
- 
-
   return (
+    <ShoppingCartProvider>
     <Layout>
     <Routes>
     <Route path="/" element={<Home />}/>
@@ -38,6 +37,7 @@ function App() {
     <Route path="/productTest" element={<ProductTest />}/>
     </Routes> 
     </Layout>
+    </ShoppingCartProvider>
   )
 }
 

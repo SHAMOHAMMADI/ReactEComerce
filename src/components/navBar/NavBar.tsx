@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Container from "../container/Container";
+import { ShoppingCartContext } from "../../context/ShoppingCartContext";
 function NavBar() {
+ 
+  const {cartItems} = useContext(ShoppingCartContext)
+
+
   return (
     <div className="shadow border-b">
       <Container>
@@ -17,6 +22,7 @@ function NavBar() {
           <div>
             <Link to="/cart">
             <button>سبد خرید</button>
+            
             </Link>
           </div>
         </div>

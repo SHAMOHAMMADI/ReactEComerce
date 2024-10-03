@@ -1,17 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "../../components/container/Container";
 import Button from "../../components/button/Button";
 import { checkVariant } from "../../components/button/Button";
 import { getProduct } from "../../services/api";
 import { Products } from "../../types/server";
+import { ShoppingCartContext, useShoppingCartContext } from "../../context/ShoppingCartContext";
+import CartItem from "../../components/cartItem/CartItem";
 
 function Product() {
   const params = useParams<{id: string }>();
   const [productData , setProductData] = useState<Products>()
+
+ const {handleDecreaseProductQTY , handleIncreaseProductQTY , cartItems} = useShoppingCartContext()
+
+
 useEffect(()=>{
 getProduct(params.id as string).then(result => setProductData(result))
 },[])
+
+
+console.log(CartItem);
+
   return (
     <Container>
       <div className="text-sm my-4 text-justify grid grid-cols-12 h-fit flex-row-reverse mt-6  rounded-2xl ">
@@ -28,9 +38,7 @@ getProduct(params.id as string).then(result => setProductData(result))
             alt=""
           />
           <Button
-            onClick={() => {
-              alert("test");  
-            }}
+            onClick={()=>handleIncreaseProductQTY(parseInt(params.id as string))}
             style={{padding:"10px 20px" , borderRadius:"10px" , margin:"10px",boxShadow:"-1px 1px 5px 1px rgba(1 , 1 , 1 , 0.3)"}}
             variant="danger"
             id="btn-2"
@@ -38,6 +46,9 @@ getProduct(params.id as string).then(result => setProductData(result))
           >
             add to cart
           </Button>
+          <Button variant="primary" className="px-6 rounded shadow-inner my-2">+</Button>
+          
+          <Button variant="primary"  className="px-6 rounded shadow-inner my-2">-</Button>
           {/* <Button
           style={{color:"red"}}
           variant="primary"
