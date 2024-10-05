@@ -8,15 +8,9 @@ import Cart from './pages/cart/Cart.tsx'
 import ProductTest from './pages/productTest/ProductTest.tsx'
 import axios from 'axios'
 import {useState , useEffect, createContext} from 'react'
-import { ShoppingCartContext, ShoppingCartProvider } from './context/ShoppingCartContext.tsx'
+import  {ShoppingCartProvider } from './context/ShoppingCartContext.tsx'
 
-type TData = {
-  userId: number
-  id: number
-  title: string
-  completed: boolean 
-  image : string
-}
+
 
 // export interface Root {
   

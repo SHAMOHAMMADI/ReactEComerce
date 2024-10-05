@@ -1,80 +1,82 @@
-import { createContext, useContext, useState } from "react"
+import { createContext, useContext, useState } from "react";
 
-
-interface ShoppingCartContext{
-    cartItems: CartItem[];
-    handleIncreaseProductQTY: (id:number)=>void
-    handleDecreaseProductQTY: (id:number)=>void
-}
-interface ShoppingCartProvider{
+interface ShoppingCartProvider {
     children : React.ReactNode
 }
-
-interface CartItem {
-    id : number ;
-    qty : number ;
+interface cartItems {
+    id : number 
+    qty : number
+}
+interface ShoppingCartContext {
+    cartItems: cartItems[]
+    handleIncreaseProductQTY : (id:number)=> void 
+    handleDecreaseProductQTY : (id:number)=> void
+    handleProductQty : (id:number) => number
 }
 
-/////////////////
-export const ShoppingCartContext = createContext<ShoppingCartContext>({
-    cartItems: []
-})
-// export const ShoppingCartContext = createContext({} as ShoppingCartContext)
-////////////////
+
+
+
+// export const ShoppingCartContext = createContext<ShoppingCartContext>({
+//     cartItems: [] 
+// })
+
+export const ShoppingCartContext = createContext({} as ShoppingCartContext)
+
 export const useShoppingCartContext = ()=>{
     return useContext(ShoppingCartContext)
 }
 
 export function ShoppingCartProvider({children}:ShoppingCartProvider){
- 
- const [cartItems , setCartItems] = useState<CartItem[]>([])
-
-
-const handleIncreaseProductQTY = (id: number)=>{
-    setCartItems(currentItems =>{
-        const selectedItem = currentItems.find(item=>item.id == id)
-        if(selectedItem == null){
-            return [...currentItems , { id: id , qty:1}]
-        }else{
-           return currentItems.map((item)=>{
-              if(item.id == id){
-                return {
-                    ...item , qty:item.qty + 1
-                }
-              }else {
-                return item
-              }
-            })
-        }
-    })
-
+    const [cartItems , setCartItems] = useState<cartItems[]>([])
     
-    const handleDecreaseProductQTY = (id: number)=>{
-        setCartItems(currentItems =>{
-            let selectedItem = currentItems.find(item=>item.id == id)
-            if(selectedItem.qty == 1){
-                return currentItems.filter(item => item.id !== id)
-            }else{
-               return currentItems.map((item)=>{
-                  if(item.id == id){
-                    return {
-                        ...item , qty:item.qty - 1
-                    }
-                  }else {
-                    return item
-                  }
-                })
+    const handleIncreaseProductQTY = (id:number)=>{
+    setCartItems(currentItem=>{
+      let selectedItem = currentItem.find(item=>item.id == id)
+      if(selectedItem == null){
+        return[...currentItem, {id:id , qty:1}];
+      }  
+      else{
+       return  currentItem.map(item=>{
+            if(item.id == id){
+                return {
+                    ...item , 
+                    qty : item.qty +1
+                }
+            } 
+            else{
+                return item;
             }
         })
-    
+      }
+    })
+    } 
+    const handleDecreaseProductQTY = (id:number)=>{
+    setCartItems(currentItems=>{
+       let selectedItem = currentItems.find(item=> item.id == id)
 
+       if(selectedItem?.qty === 1){
+        return currentItems.filter(item => item.id !==id)
+       }else{
+          return currentItems.map((item)=>{
+            if(item.id == id){
+                return {...item , qty: item.qty - 1}
+            }
+            else {
+                return item
+            }
+          })
+       }
+    })
+    }
 
+    const handleProductQty = (id:number)=>{
+       return cartItems.find(item => item.id == id)?.qty || 0
+    }
 
-
-}
     return (
-        <ShoppingCartContext.Provider  value={{cartItems , handleDecreaseProductQTY , handleIncreaseProductQTY}}> 
+        <ShoppingCartContext.Provider value={{cartItems , handleIncreaseProductQTY , handleDecreaseProductQTY ,handleProductQty}}>
             {children}
         </ShoppingCartContext.Provider>
     )
-}}
+}

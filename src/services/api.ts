@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const client = axios.create({
-    baseURL : "http://localhost:3061"
+    baseURL : "http://localhost:5174"
 })
 
 export async function getProducts(){

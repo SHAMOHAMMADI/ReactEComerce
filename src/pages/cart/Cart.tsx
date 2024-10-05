@@ -7,9 +7,9 @@ import { ShoppingCartContext, useShoppingCartContext } from '../../context/Shopp
 function Cart() {
   
   const {cartItems} = useShoppingCartContext()
-
+  
   return (
-    <div>
+    <div> 
         <Container>
             <div className="grid grid-cols-1  gap-2 mt-6">
 

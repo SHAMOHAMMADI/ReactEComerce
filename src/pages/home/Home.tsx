@@ -4,7 +4,7 @@ import NavBar from '../../components/navBar/NavBar'
 function Home() {
   return (
     <>
-    {/* <NavBar /> */}
+    <NavBar />
     <div className="flex justify-center items-center ">Home</div>
     </>
   )
