@@ -21,10 +21,13 @@ function NavBar() {
               <Link to="/store">فروشگاه</Link>
             </li>
           </ul>
-          <div>
-            <Button onClick={handleLogOut}>LogOut</Button>
+          <div className='flex [&>*]:m-2'>
+            <div>
+
+            <Button onClick={handleLogOut} className="hover:shadow-inner hover: hover:scale-105 rounded-md border border-black-500 px-4 pb-2 ">خروج</Button>
+            </div>
             <Link to="/cart" className="flex">
-            <button className="relative  text-white rounded-xl shadow-inner"><img src="/public/2.svg" className="w-8" alt="" />
+            <button className="relative  text-white rounded-xl shadow-inner"><img src="/public/2.svg" className="w-8 shadow-inner hover:scale-105" alt="" />
               {cartQty !== 0 ? (<span className="absolute border rounded-full bg-white text-black -top-2 -right-1">{cartQty}</span>) : ""}
             </button>
             

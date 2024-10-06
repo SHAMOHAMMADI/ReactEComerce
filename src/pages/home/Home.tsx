@@ -4,8 +4,7 @@ import NavBar from '../../components/navBar/NavBar'
 function Home() {
   return (
     <>
-    <NavBar />
-    <div className="flex justify-center items-center ">Home</div>
+    <div className="flex justify-center items-center h-screen ">Home</div>
     </>
   )
 }

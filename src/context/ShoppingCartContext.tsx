@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { login } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 interface ShoppingCartProvider {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ interface ShoppingCartContext {
   cartQty : number,
   isLogin : boolean,
   setIsLogin : ()=>void,
-  handleLogin : ()=>void,
+  handleLogin : (username:string , password:string)=>void,
   handleLogOut : ()=>void
 }
 
@@ -92,16 +93,21 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
 
   const [isLogin , setIsLogin] = useState(false)
 
-  function handleLogin (){
-    login("salar","1234").finally(()=>{
+  const navigate = useNavigate()
+
+  function handleLogin (username:string , password: string){
+    login(username,password).finally(()=>{
      let token = "sdgfsdgsdgfsdfgdggsdfgsdf"
      localStorage.setItem("token",token)
       setIsLogin(true)
+      navigate('/store')
     })
   }
 
   const handleLogOut = ()=>{
     setIsLogin(false)
+    navigate('/login')
+    localStorage.removeItem("token")
   }
 
   useEffect(()=>{
