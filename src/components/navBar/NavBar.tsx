@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Container from "../container/Container";
-import { ShoppingCartContext } from "../../context/ShoppingCartContext";
+import { ShoppingCartContext, useShoppingCartContext } from "../../context/ShoppingCartContext";
+import Button from "../button/Button";
 function NavBar() {
  
-  const {cartItems} = useContext(ShoppingCartContext)
+  const {cartItems , cartQty} = useContext(ShoppingCartContext)
+  const { handleLogin , handleLogOut} = useShoppingCartContext()
 
 
   return (
@@ -20,8 +22,11 @@ function NavBar() {
             </li>
           </ul>
           <div>
-            <Link to="/cart">
-            <button>سبد خرید</button>
+            <Button onClick={handleLogOut}>LogOut</Button>
+            <Link to="/cart" className="flex">
+            <button className="relative  text-white rounded-xl shadow-inner"><img src="/public/2.svg" className="w-8" alt="" />
+              {cartQty !== 0 ? (<span className="absolute border rounded-full bg-white text-black -top-2 -right-1">{cartQty}</span>) : ""}
+            </button>
             
             </Link>
           </div>

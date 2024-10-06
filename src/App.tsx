@@ -9,6 +9,8 @@ import ProductTest from './pages/productTest/ProductTest.tsx'
 import axios from 'axios'
 import {useState , useEffect, createContext} from 'react'
 import  {ShoppingCartProvider } from './context/ShoppingCartContext.tsx'
+import PrivateRoute from './components/privateRoute/privateRoute.tsx'
+import Login from './pages/login/Login.tsx'
 
 
 
@@ -27,8 +29,13 @@ function App() {
     <Route path="/" element={<Home />}/>
     <Route path="/store" element={<Store />}/>
     <Route path="/product/:id" element={<Product />}/>
-    <Route path="/cart" element={<Cart />}/>
+    <Route path="/login" element={<Login />}/>
+    {/* <Route path="/cart" element={<Cart />}/> */}
     <Route path="/productTest" element={<ProductTest />}/>
+    
+    <Route element={<PrivateRoute/>}>
+      <Route path="/cart" element={<Cart />}/>
+    </Route>
     </Routes> 
     </Layout>
     </ShoppingCartProvider>

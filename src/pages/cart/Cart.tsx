@@ -6,18 +6,16 @@ import { ShoppingCartContext, useShoppingCartContext } from '../../context/Shopp
 
 function Cart() {
   
-  const {cartItems} = useShoppingCartContext()
+  const {cartItems , cartQty} = useShoppingCartContext()
   
   return (
     <div> 
         <Container>
             <div className="grid grid-cols-1  gap-2 mt-6">
-
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
+               {cartItems.map((items)=>(
+                <CartItem {...items}/>
+               ))}
+         
 
             </div>
             <div className='bg-blue-100 w-full shadow-inner text-right p-4 mt-6 rounded-md'>

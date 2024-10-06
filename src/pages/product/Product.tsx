@@ -20,6 +20,7 @@ function Product() {
     handleIncreaseProductQTY,
     cartItems,
     handleProductQty,
+    handleRemoveProduct
   } = useShoppingCartContext();
 
   useEffect(() => {
@@ -54,7 +55,7 @@ function Product() {
                   margin: "10px",
                   boxShadow: "-1px 1px 5px 1px rgba(1 , 1 , 1 , 0.3)",
                 }}
-                variant="danger"
+                variant="success"
                 id="btn-2"
               >
                 add to cart
@@ -80,8 +81,10 @@ function Product() {
                 >
                   -
                 </Button>
+                <Button onClick={()=>handleRemoveProduct(parseInt(params.id as string))} className="px-6 rounded shadow-inner my-2" variant="danger">حذف</Button>
               </div>
             )}
+
             {/* <Button
             style={{color:"red"}}
             variant="primary"
