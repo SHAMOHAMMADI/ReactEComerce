@@ -18,7 +18,7 @@ interface ShoppingCartContext {
   handleRemoveProduct: (id: number) => void;
   cartQty : number,
   isLogin : boolean,
-  setIsLogin : ()=>void,
+  setIsLogin ?: ()=>void,
   handleLogin : (username:string , password:string)=>void,
   handleLogOut : ()=>void
 }
@@ -44,7 +44,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
 
   const handleIncreaseProductQTY = (id: number) => {
     setCartItems((currentItem) => {
-      let selectedItem = currentItem.find((item) => item.id == id);
+      const selectedItem = currentItem.find((item) => item.id == id);
       if (selectedItem == null) {
         return [...currentItem, { id: id, qty: 1 }];
       } else {
@@ -63,7 +63,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
   };
   const handleDecreaseProductQTY = (id: number) => {
     setCartItems((currentItems) => {
-      let selectedItem = currentItems.find((item) => item.id == id);
+      const selectedItem = currentItems.find((item) => item.id == id);
 
       if (selectedItem?.qty === 1) {
         return currentItems.filter((item) => item.id !== id);
@@ -97,7 +97,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
 
   function handleLogin (username:string , password: string){
     login(username,password).finally(()=>{
-     let token = "sdgfsdgsdgfsdfgdggsdfgsdf"
+     const token = "sdgfsdgsdgfsdfgdggsdfgsdf"
      localStorage.setItem("token",token)
       setIsLogin(true)
       navigate('/store')
@@ -111,7 +111,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
   }
 
   useEffect(()=>{
-    let token = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
 
     if(token){
       setIsLogin(true)
@@ -127,7 +127,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
         handleRemoveProduct,
         cartQty,
         isLogin,
-        setIsLogin,
+        // setIsLogin,
         handleLogin,
         handleLogOut
       }}

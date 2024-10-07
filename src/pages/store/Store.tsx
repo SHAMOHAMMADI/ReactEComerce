@@ -1,5 +1,4 @@
- import React, { useEffect, useState } from 'react'
-import NavBar from '../../components/navBar/NavBar'
+ import { useEffect, useState } from 'react'
 import ProductItem from '../../components/productItem/ProductItem'
 import Container from '../../components/container/Container'
 import { Link } from 'react-router-dom'
@@ -30,20 +29,6 @@ console.log(products)
               </Link>
           ))}
 
-
-        {/* <Link to={`/product/${1}`}>
-        <ProductItem />
-        </Link>
-        <Link to={`/product/${2}`}>
-        <ProductItem />
-        </Link>
-        <Link to={`/product/${3}`}>
-        <ProductItem />
-        </Link>
-        <Link to={`/product/${4}`}>
-        <ProductItem />
-        </Link>
-         */}
       </div>
       </Container>
     </div>

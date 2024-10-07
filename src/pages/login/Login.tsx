@@ -1,11 +1,11 @@
-import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Container from "../../components/container/Container";
 import Button from "../../components/button/Button";
 import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
 function Login() {
 
-    const {setIsLogin , handleLogin} = useShoppingCartContext()
+    const {handleLogin} = useShoppingCartContext()
 
     const [user , setUser] = useState({
         username :"" ,

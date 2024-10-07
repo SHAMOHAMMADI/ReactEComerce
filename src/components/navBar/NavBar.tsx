@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Container from "../container/Container";
 import { ShoppingCartContext, useShoppingCartContext } from "../../context/ShoppingCartContext";
 import Button from "../button/Button";
 function NavBar() {
  
-  const {cartItems , cartQty} = useContext(ShoppingCartContext)
-  const { handleLogin , handleLogOut} = useShoppingCartContext()
+  const { cartQty} = useContext(ShoppingCartContext)
+  const { handleLogOut} = useShoppingCartContext()
 
 
   return (

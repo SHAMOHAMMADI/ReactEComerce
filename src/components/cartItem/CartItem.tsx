@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../button/Button";
 import { getProduct } from "../../services/api";
 import { Products } from "../../types/server";

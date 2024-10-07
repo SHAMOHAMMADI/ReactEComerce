@@ -1,16 +1,12 @@
 import Home from './pages/home/Home.tsx'
 import Store from './pages/store/Store.tsx'
 import {Routes , Route, Navigate} from 'react-router-dom'
-import NavBar from './components/navBar/NavBar.tsx'
 import Layout from './components/layout/Layout.tsx'
 import Product from './pages/product/Product.tsx'
 import Cart from './pages/cart/Cart.tsx'
-import ProductTest from './pages/productTest/ProductTest.tsx'
-import axios from 'axios'
-import {useState , useEffect, createContext} from 'react'
-import  {ShoppingCartProvider, useShoppingCartContext } from './context/ShoppingCartContext.tsx'
-import PrivateRoute from './components/privateRoute/privateRoute.tsx'
+import  { useShoppingCartContext } from './context/ShoppingCartContext.tsx'
 import Login from './pages/login/Login.tsx'
+import PrivateRoute from './components/privateRoute/PrivateRoute.tsx'
 
 
 

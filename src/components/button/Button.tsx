@@ -1,4 +1,3 @@
-import React from 'react'
 import { ComponentProps } from 'react'
 
 type TVariant = "primary" | "secondary" | "danger" | "warning" | "success" 
