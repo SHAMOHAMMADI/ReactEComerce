@@ -31,7 +31,7 @@ function Product() {
 
   return (
     <Container>
-      <div className="text-sm my-4 text-justify grid grid-cols-12 h-fit flex-row-reverse mt-6  rounded-2xl ">
+      <div className="text-sm my-4 text-justify grid grid-cols-12 h-fit flex-row-reverse mt-6  rounded-2xl">
         <div className="col-span-9 bg-blue-100 p-4 rtl  rounded-s-xl">
           <p className="">{productData?.description}</p>
         </div>

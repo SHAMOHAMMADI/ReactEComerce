@@ -28,10 +28,7 @@ const {isLogin} = useShoppingCartContext()
     <Route path="/" element={<Home />}/>
     <Route path="/store" element={<Store />}/>
     <Route path="/product/:id" element={<Product />}/>
-    <Route path="/login" element={isLogin ? <Navigate to="/"/> : <Login />}/>
-    {/* <Route path="/cart" element={<Cart />}/> */}
-    <Route path="/productTest" element={<ProductTest />}/>
-    
+    <Route path="/login" element={isLogin ? <Navigate to="/"/> : <Login />}/>    
     <Route element={<PrivateRoute/>}>
       <Route path="/cart" element={<Cart />}/>
     </Route>
