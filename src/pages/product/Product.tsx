@@ -4,9 +4,7 @@ import Container from "../../components/container/Container";
 import Button from "../../components/button/Button";
 import { getProduct } from "../../services/api";
 import { Products } from "../../types/server";
-import {
-  useShoppingCartContext,
-} from "../../context/ShoppingCartContext";
+import { useShoppingCartContext } from "../../context/ShoppingCartContext";
 
 function Product() {
   const params = useParams<{ id: string }>();
@@ -17,7 +15,7 @@ function Product() {
     handleIncreaseProductQTY,
     cartItems,
     handleProductQty,
-    handleRemoveProduct
+    handleRemoveProduct,
   } = useShoppingCartContext();
 
   useEffect(() => {
@@ -78,7 +76,15 @@ function Product() {
                 >
                   -
                 </Button>
-                <Button onClick={()=>handleRemoveProduct(parseInt(params.id as string))} className="px-6 rounded shadow-inner my-2" variant="danger">حذف</Button>
+                <Button
+                  onClick={() =>
+                    handleRemoveProduct(parseInt(params.id as string))
+                  }
+                  className="px-6 rounded shadow-inner my-2"
+                  variant="danger"
+                >
+                  حذف
+                </Button>
               </div>
             )}
 

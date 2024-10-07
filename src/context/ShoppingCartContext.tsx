@@ -16,11 +16,11 @@ interface ShoppingCartContext {
   handleDecreaseProductQTY: (id: number) => void;
   handleProductQty: (id: number) => number;
   handleRemoveProduct: (id: number) => void;
-  cartQty : number,
-  isLogin : boolean,
-  setIsLogin ?: ()=>void,
-  handleLogin : (username:string , password:string)=>void,
-  handleLogOut : ()=>void
+  cartQty: number;
+  isLogin: boolean;
+  setIsLogin?: () => void;
+  handleLogin: (username: string, password: string) => void;
+  handleLogOut: () => void;
 }
 
 // export const ShoppingCartContext = createContext<ShoppingCartContext>({
@@ -34,13 +34,12 @@ export const useShoppingCartContext = () => {
 };
 
 export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
+  // const [cartItems, setCartItems] = useState<cartItems[]>([]);
 
-
-
-  // const [cartItems, setCartItems] = useState<cartItems[]>([]); 
-
-
- const [cartItems, setCartItems] = useLocalStorage<cartItems[]>("cartItems",[ ])
+  const [cartItems, setCartItems] = useLocalStorage<cartItems[]>(
+    "cartItems",
+    []
+  );
 
   const handleIncreaseProductQTY = (id: number) => {
     setCartItems((currentItem) => {
@@ -89,34 +88,34 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
     );
   };
 
-  const cartQty =  cartItems.reduce((totalQty , item)=> totalQty + item.qty  , 0)
+  const cartQty = cartItems.reduce((totalQty, item) => totalQty + item.qty, 0);
 
-  const [isLogin , setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  function handleLogin (username:string , password: string){
-    login(username,password).finally(()=>{
-     const token = "sdgfsdgsdgfsdfgdggsdfgsdf"
-     localStorage.setItem("token",token)
-      setIsLogin(true)
-      navigate('/store')
-    })
+  function handleLogin(username: string, password: string) {
+    login(username, password).finally(() => {
+      const token = "sdgfsdgsdgfsdfgdggsdfgsdf";
+      localStorage.setItem("token", token);
+      setIsLogin(true);
+      navigate("/store");
+    });
   }
 
-  const handleLogOut = ()=>{
-    setIsLogin(false)
-    navigate('/login')
-    localStorage.removeItem("token")
-  }
+  const handleLogOut = () => {
+    setIsLogin(false);
+    navigate("/login");
+    localStorage.removeItem("token");
+  };
 
-  useEffect(()=>{
-    const token = localStorage.getItem("token")
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-    if(token){
-      setIsLogin(true)
+    if (token) {
+      setIsLogin(true);
     }
-  },[])
+  }, []);
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -129,7 +128,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProvider) {
         isLogin,
         // setIsLogin,
         handleLogin,
-        handleLogOut
+        handleLogOut,
       }}
     >
       {children}

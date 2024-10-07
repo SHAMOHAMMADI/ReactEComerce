@@ -1,9 +1,16 @@
 import Button from "../button/Button";
 import { Products } from "../../types/server";
 
-type ProductItem = Products 
+type ProductItem = Products;
 
-function ProductItem({title , id , price , description , image , rating}:ProductItem) {
+function ProductItem({
+  title,
+  id,
+  price,
+  description,
+  image,
+  rating,
+}: ProductItem) {
   return (
     <div className="border shadow rounded">
       <img src={image} className="rounded-t" alt="product Image" />
@@ -13,14 +20,17 @@ function ProductItem({title , id , price , description , image , rating}:Product
         <span>{price}</span>
       </div>
       <div className=" px-4 line-clamp-2 text-justify">
-        <p>
-         {description}
-        </p>
+        <p>{description}</p>
         <p>{rating.rate}</p>
         <p>{rating.count}</p>
       </div>
       <div>
-        <Button variant="primary" className='rounded  flex justify-center mt-2 h-10 items-center  hover:bg-blue-100'>add to cart</Button>
+        <Button
+          variant="primary"
+          className="rounded  flex justify-center mt-2 h-10 items-center  hover:bg-blue-100"
+        >
+          add to cart
+        </Button>
       </div>
     </div>
   );

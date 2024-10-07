@@ -1,14 +1,10 @@
-import React from 'react'
+import React from "react";
 
 interface IContainer {
-children : React.ReactNode
+  children: React.ReactNode;
 }
-function Container({children}:IContainer) {
-  return (
-    <div className='container mx-auto '>
-        {children}
-    </div>
-  )
+function Container({ children }: IContainer) {
+  return <div className="container mx-auto ">{children}</div>;
 }
 
-export default Container
+export default Container;
